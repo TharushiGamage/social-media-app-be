@@ -154,6 +154,16 @@ const getUserPosts = async (req, res) => {
     }
 };
 
+// Get all posts
+const getAllPosts = async (req, res) => {
+    try {
+        const posts = await Post.find();
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
+
 module.exports = {
     createPost,
     updatePost,
@@ -161,5 +171,6 @@ module.exports = {
     likePost,
     getPost,
     getTimelinePosts,
-    getUserPosts
+    getUserPosts,
+    getAllPosts
 };
